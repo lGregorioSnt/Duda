@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dudinhaa</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .spotify-player {
+      margin-bottom: 20px;
+    }
+
+  .carousel-container {
+  position: relative;
+  width: 474px;
+  height: 850px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: #222;
+}
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+  .carousel-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Garante que a imagem não seja cortada */
+  flex-shrink: 0;
+  background: #222; /* Fundo para imagens menores */
+}
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-buttons button {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-buttons button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+
+    <audio id="background-audio" autoplay loop>
+        <source src="Love Like You (feat. Rebecca Sugar) (End Credits).mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+
+    <div class="carousel-container">
+        <div class="carousel-images" id="carousel-images">
+          <img src="farm.jpg" alt="Imagem 1">
+          <img src="manga.png" alt="Imagem 2">
+          <img src="sorriso.jpg" alt="Imagem 3">
+          <img src="trend.jpg" alt="Imagem 4">
+          <img src="urso.jpg" alt="Imagem 5">
+          <img src="peneira.jpg" alt="Imagem 6">
+          <img src="verde.png" alt="Imagem 7">
+        </div>
+        <div class="carousel-buttons">
+          <button id="prev-btn">&#10094;</button>
+          <button id="next-btn">&#10095;</button>
+        </div>
+      </div>
+  <h2 style="color: aquamarine;">Dudinha meu amor</h2>
+  <p><strong id="time-elapsed"></strong></p>
+
+  <p>Olha essas imagens, Sabe de que dia estão contando? <br> 22 de janeiro de 2024, quando conheci uma fedida aí no senai. <br> Até hoje, ela é o amor da minha vida. Te amo neguinha, quero estar com você para sempre. <br> Fique com algumas fotos do que mais amo no mundo.</p>
+
+  <!-- Spotify Player -->
+ <!-- Spotify Player -->
+
+  <!-- Carrossel de imagens -->
+ 
+
+  <script>
+    // Função para criar corações aleatórios que flutuam pela página
+    function createHeart() {
+      const heartsContainer = document.querySelector('.hearts');
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      heart.style.fontSize = (10 + Math.random() * 30) + 'px';
+      heart.style.animationDuration = 3 + Math.random() * 5 + 's';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+
+    // Função para calcular o tempo em tempo real
+    function updateTime() {
+      const startDate = new Date("2024-01-22T00:00:00"); // Data inicial
+      const now = new Date(); // Data atual
+      const diff = now - startDate; // Diferença em milissegundos
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const years = Math.floor(totalSeconds / (365 * 24 * 60 * 60)); // Calcula os anos
+      const remainingSecondsAfterYears = totalSeconds % (365 * 24 * 60 * 60);
+
+      const months = Math.floor(remainingSecondsAfterYears / (30 * 24 * 60 * 60)); // Calcula os meses
+      const remainingSecondsAfterMonths = remainingSecondsAfterYears % (30 * 24 * 60 * 60);
+
+      const days = Math.floor(remainingSecondsAfterMonths / (24 * 60 * 60)); // Calcula os dias
+      const remainingSecondsAfterDays = remainingSecondsAfterMonths % (24 * 60 * 60);
+
+      const hours = Math.floor(remainingSecondsAfterDays / (60 * 60)); // Calcula as horas
+      const remainingSecondsAfterHours = remainingSecondsAfterDays % (60 * 60);
+
+      const minutes = Math.floor(remainingSecondsAfterHours / 60); // Calcula os minutos
+      const seconds = remainingSecondsAfterHours % 60; // Calcula os segundos
+
+      document.getElementById("time-elapsed").textContent =
+        `${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+    }
+
+    // Atualiza o tempo a cada segundo
+    setInterval(updateTime, 1000);
+    updateTime(); // Chamada inicial para exibir o tempo imediatamente
+
+    // Carrossel de imagens
+    const carouselImages = document.getElementById("carousel-images");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      const imageWidth = carouselImages.children[0].clientWidth;
+      carouselImages.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % carouselImages.children.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + carouselImages.children.length) % carouselImages.children.length;
+      updateCarousel();
+    });
+
+    // Troca automática de imagens a cada 5 segundos
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % carouselImages.children.length;
+      updateCarousel();
+    }, 5000);
+
+    const audio = document.getElementById("background-audio");
+  audio.volume = 0.1; // Define o volume (0.0 = mudo, 1.0 = volume máximo)
+  </script>
+</body>
+</html>
