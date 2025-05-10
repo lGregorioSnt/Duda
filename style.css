@@ -1,0 +1,96 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: turquoise;
+    margin: 0; /* Remove margens padrão */
+}
+
+.card, .intro {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    height: 600px;
+    width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.question {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    height: 100%; /* Garante que ocupe toda a altura do container */
+    width: 100%; /* Garante que ocupe toda a largura do container */
+}
+
+.question > p {
+    font-size: 22px;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 0; 
+    line-height: 1.5; 
+}
+
+.qrcode, .intro-box {
+    width: 150px;
+    height: 150px;
+    background-color: #ccc; /* Placeholder para a box */
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+.buttons, .intro-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-yes, .btn-no, .btn-start {
+    height: 48px;
+    width: 100px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-yes {
+    background-color: #9AFF9A;
+}
+
+.btn-no {
+    background-color: #FF4040;
+    color: #fff;
+}
+
+.btn-start {
+    background-color: #9AFF9A;
+}
+
+.answer {
+    display: none; /* Oculta o elemento inicialmente */
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    height: 100%; /* Garante que ocupe toda a altura do container */
+    padding: 16px;
+}
+
+.answer > p {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px #000;
+    margin: 0 0 16px 0;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sim ou Não</title>
+  </head>
+  <body>
+    <!-- Primeira pergunta -->
+    <div class="intro" id="intro">
+      <p style=" font-size: 22px;
+      font-family: sans-serif;
+      font-weight: 600;
+      text-align: center;
+      margin: 0; 
+      line-height: 1.5; ">Gostaria de uma surpresa dessa pessoa aqui?</p>
+     <img class="intro-box" src="lucas.jpeg" alt="">
+      <button id="start" class="btn-start">Sim!</button>
+    </div>
+
+    <!-- Segunda pergunta -->
+    <div class="card" id="card" style="display: none;">
+      <div class="question" id="question">
+        <p>Quer conhecer a garota mais linda do mundo?</p>
+        <div class="buttons">
+          <button id="yes" class="btn-yes">Sim!</button>
+          <button id="no" class="btn-no">Não</button>
+        </div>
+      </div>
+
+      <div class="answer" style="display: none;">
+        <p>Escaneia esse quadrado mágico aqui</p>
+        <div class="qrcode">
+          <!-- Substitua este div pelo QR Code real -->
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
